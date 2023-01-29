@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Formik, Form, Field } from "formik";
 import classNames from "classnames";
 import { BuildingStorefrontIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
@@ -20,10 +20,12 @@ export default function ConnexionPage({ bff_base }: { bff_base: string }) {
         seller: `${bff_base}/auth/seller/login`
     }
 
-    if (user) {
-        setSnackBar({ type: 'error', message: 'Vous êtes déja connecté...' })
-        router.push('/')
-    }
+    useEffect(() => {
+        if (user) {
+            setSnackBar({ type: 'error', message: 'Vous êtes déja connecté...' })
+            router.push('/')
+        }
+    }, [])
 
     const handleUserTypeSelect = (type: string) => {
         setPath(paths[type])
@@ -33,8 +35,8 @@ export default function ConnexionPage({ bff_base }: { bff_base: string }) {
     const handleSubmit = async (values: { email: string, password: string }) => {
         try {
             const res = await (await axios.post(path, values))
-            const { user, access_token } = res.data
-            setUser({ user, access_token })
+            const { user, access_token, refresh_token } = res.data
+            setUser({ user, access_token, refresh_token })
             setSnackBar({ type: 'info', message: `👋 Hey !, content de vous re-voir ${user.first_name}!` })
             router.push('/')
         } catch (error: any) {
@@ -116,7 +118,7 @@ export default function ConnexionPage({ bff_base }: { bff_base: string }) {
                     as={Fragment}
                 >
                     <div className="absolute w-[500px] px-12 py-11 bg-main-white rounded-lg  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <h2>Heureux de vous revoir! 👋</h2>
+                        <h2 className=" text-primary-color font-semibold">Heureux de vous revoir! 👋</h2>
                         <h3 className=" font-semibold text-third-color text-2xl mb-8">Me connecter</h3>
                         <div className="w-full">{displayForm ? <LogForm /> : <UserTypeSelect />}</div>
                         <div></div>
