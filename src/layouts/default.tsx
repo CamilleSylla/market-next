@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function DefaultLayout({ children }) {
     const router = useRouter()
-    const blackListPaths = ["/inscription/enseigne"]
+    const blackListPaths = ["/inscription/enseigne", "/connexion"]
     const [visible, setVisible] = useState<boolean>(true)
 
     useEffect(() => {

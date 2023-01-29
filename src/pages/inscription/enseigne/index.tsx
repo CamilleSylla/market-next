@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { Formik, Form, Field } from "formik";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Seller, Shop, ShopType } from "types/pages/enseigne.dto";
 import { SellerSchema, ShopSchema } from "./validations";
 import { Listbox, Transition } from '@headlessui/react'

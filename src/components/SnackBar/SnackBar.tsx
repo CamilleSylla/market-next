@@ -33,7 +33,7 @@ export default function SnackBar({ children }: { children: any }) {
 
 
     return (
-        <>
+        <div className="absolute w-screen z-50">
             <Transition
                 appear={true}
                 show={snackBar ? true : false}
@@ -47,6 +47,6 @@ export default function SnackBar({ children }: { children: any }) {
                 <Snack />
             </Transition>
             {children}
-        </>
+        </div>
     )
 }
