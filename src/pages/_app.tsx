@@ -1,11 +1,11 @@
 import SnackBar from '@/components/SnackBar/SnackBar'
 import CookiesContextProvider from '@/context/CookiesContext'
 import SnackBarProvider from '@/context/SnackBarContext'
-import UserContextProvider, { UserContext } from '@/context/UserContext'
+import UserContextProvider from '@/context/UserContext'
 import DefaultLayout from '@/layouts/default'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Cookies from "universal-cookie";
 import axios from "axios"
 

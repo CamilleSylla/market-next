@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { User } from "types/context/user";
 import Cookies from "universal-cookie";
-import axios from "axios"
 
 export const UserContext = createContext<any>([null])
 
