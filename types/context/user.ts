@@ -9,5 +9,6 @@ export type User = {
   first_name: string;
   id: number;
   last_name: string;
+  totp_enable: boolean;
   updated_at: string;
 };

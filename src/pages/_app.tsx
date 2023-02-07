@@ -8,6 +8,7 @@ import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react'
 import Cookies from "universal-cookie";
 import axios from "axios"
+import LoginContextProvider from '@/context/LoginContext'
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -32,15 +33,17 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <CookiesContextProvider>
-      <UserContextProvider refresh={refreshUser}>
-        <SnackBarProvider>
-          <SnackBar>
-            <DefaultLayout>
-              <Component {...pageProps} />
-            </DefaultLayout>
-          </SnackBar>
-        </SnackBarProvider>
-      </UserContextProvider>
+      <LoginContextProvider>
+        <UserContextProvider refresh={refreshUser}>
+          <SnackBarProvider>
+            <SnackBar>
+              <DefaultLayout>
+                <Component {...pageProps} />
+              </DefaultLayout>
+            </SnackBar>
+          </SnackBarProvider>
+        </UserContextProvider>
+      </LoginContextProvider>
     </CookiesContextProvider>
   )
 }

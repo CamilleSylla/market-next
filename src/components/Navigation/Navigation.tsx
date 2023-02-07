@@ -12,7 +12,7 @@ export default function Navigation() {
                 <h1>Logo</h1>
                 <div className="mr-36">
                     {user ? <UserMenu />
-                        : <Link href="/connexion"
+                        : <Link href="/connexion/type"
                             className="inline-block rounded-lg p-2 font-semibold text-sm  border-2 text-primary-color border-primary-color shadow-custom hover:shadow-custom-effect transition-all ease-in-out duration-150">
                             Inscrption / Connexion
                         </Link>
